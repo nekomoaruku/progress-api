@@ -7,25 +7,32 @@ var users = {
   }
 };
 
-var authenticate = function(req, res, next) {
+module.exports = function(app) {
 
-  var userId = req.body['userId'];
-  var password = req.body['password'];
+  router.route('/login')
+    .post(function(req, res, next) {
 
-  if (!userId) {
-    return res.send(400);
-  }
-  if (!users[userId]) {
-    return res.send(403);
-  }
-  if (users[userId].password !== password) {
-    return res.send(403);
-  }
-  next();
+      var userId = req.body['userId'];
+      var password = req.body['password'];
+
+      if (!userId) {
+        return res.send(400);
+      }
+      if (!users[userId]) {
+        return res.send(403);
+      }
+      if (users[userId].password !== password) {
+        return res.send(403);
+      }
+
+      var payload = { userId: userId };
+      var token = jwt.encode(payload, app.get('jwtSecret'));
+      res.json({ status: 'success', token: token });
+
+    });
+
+  return router;
 };
 
-router.route('/login')
-  .post([authenticate], function(req, res, next) {
-  });
 
-module.exports = router;
+

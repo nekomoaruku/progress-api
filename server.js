@@ -3,7 +3,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
+// Middleware
 app.use(bodyParser.json());
+
+// Setting
+app.set('jwtSecret', config.jwtSecret);
 
 // Simple logger
 app.use(function(req, res, next) {
@@ -12,7 +16,7 @@ app.use(function(req, res, next) {
 });
 
 // account
-app.use('/account', require('./routes/account/account'));
+app.use('/account', require('./routes/account/account')(app));
 
 // Start server
 app.listen(config.port, function() {
