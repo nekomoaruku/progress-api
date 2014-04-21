@@ -1,0 +1,25 @@
+{
+  "name": "progress-api",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nekomoaruku/progress-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nekomoaruku/progress-api/issues"
+  },
+  "homepage": "https://github.com/nekomoaruku/progress-api",
+  "devDependencies": {},
+  "dependencies": {
+    "express": "~4.0.0",
+    "body-parser": "~1.0.2",
+    "jwt-simple": "~0.2.0"
+  }
+}
