@@ -1,4 +1,4 @@
-var config = require('./config.js');
+var config = require('./lib/config.js');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -15,8 +15,9 @@ app.use(function(req, res, next) {
   next();
 });
 
-// account
-app.use('/account', require('./routes/account/account')(app));
+// Routing
+app.use('/users', require('./routes/users/users'));
+app.use('/progresses', require('./routes/progresses/progresses'));
 
 // Start server
 app.listen(config.port, function() {
