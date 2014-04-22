@@ -4,8 +4,8 @@ var config = require('../../lib/config');
 var authorizer = require('../../lib/authorizer');
 
 var users = {
-  aki: {
-    password: 'landsat510'
+  manni: {
+    password: 'zaq12wsx'
   }
 };
 
